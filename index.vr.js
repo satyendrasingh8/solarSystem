@@ -27,10 +27,16 @@ export default class solarSystemVR extends React.Component {
   rotate() {
     this.setState({
   rotation:this.state.rotation + 1,
+  antirotation: this.state.antirotation -1,
     });
     if(this.state.rotation > 360)
     {
       this.setState({rotation:1,});
+    }
+
+    if(this.state.antirotation < 1)
+    {
+      this.setState({antirotation:360,});
     }
     requestAnimationFrame(this.rotate.bind(this));
   }
@@ -66,16 +72,17 @@ export default class solarSystemVR extends React.Component {
         texture={asset('venus.jpg')}
         lit
         style = {{transform:[
-          {translate:[-20,0,-50]},
+          {translate:[-10,0,-50]},
           {scale:[1.2,1.2,1.2]},
+          {rotateY: this.state.antirotation}
         ]}}
         />
         <Model
         source={{obj:asset('sphere.obj')}}
-        texture={asset('earth.jpg')}
+        texture={asset('earth.png')}
         lit
         style = {{transform:[
-          {translate:[0,0,-50]},
+          {translate:[3,0,-50]},
           {scale:[1.4,1.4,1.4]},
           {rotateY: this.state.rotation}
         ]}}
@@ -85,7 +92,7 @@ export default class solarSystemVR extends React.Component {
         texture={asset('mars.jpg')}
         lit
         style = {{transform:[
-          {translate:[20,0,-50]},
+          {translate:[15,0,-50]},
           {scale:[0.9,0.9,0.9]},
           {rotateY: this.state.rotation}
         ]}}
@@ -95,7 +102,7 @@ export default class solarSystemVR extends React.Component {
         texture={asset('jupiter.jpg')}
         lit
         style = {{transform:[
-          {translate:[50,0,-50]},
+          {translate:[52,0,-50]},
           {scale:[4.5,4.5,4.5]},
           {rotateY: this.state.rotation}
         ]}}
@@ -105,7 +112,7 @@ export default class solarSystemVR extends React.Component {
         texture={asset('saturn.jpg')}
         lit
         style = {{transform:[
-          {translate:[100,0,-50]},
+          {translate:[110,0,-50]},
           {scale:[3.5,3.5,3.5]},
           {rotateY: this.state.rotation},
           {rotateX:-20},
@@ -120,6 +127,7 @@ export default class solarSystemVR extends React.Component {
         style = {{transform:[
           {translate:[150,0,-50]},
           {scale:[1.8,1.8,1.8]},
+          {rotateY: this.state.antirotation}
           
         ]}}
         />
