@@ -1,4 +1,5 @@
 import React from 'react';
+import Descriptions from './components/DescriptionBox';
 import {
   AppRegistry,
   asset,
@@ -202,7 +203,7 @@ export default class solarSystemVR extends React.Component {
           {rotateY: this.state.rotation}
         ]}}
         />
-        
+        <Descriptions />
       </View>
     );
   }
